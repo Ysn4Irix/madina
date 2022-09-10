@@ -32,19 +32,6 @@
 
 ![📟](https://res.cloudinary.com/ydevcloud/image/upload/v1656874185/asm9cp84cbuuqmarw9wq.png)
 
-## ❯ Usage
-
-Requires Node.js 15.0 or higher download & install for [Windows](https://nodejs.org/en/download/) or [Linux](https://nodejs.org/en/download/)
-
-- Rename .env.example to .env and replace variables with your own
-
-```sh
-git clone https://github.com/Ysn4Irix/madina.git
-cd madina
-npm install
-npm start or npm run dev
-```
-
 ## Usage
 
 <b style="color:brown;">Requests is limited to 100 req/min</b>
