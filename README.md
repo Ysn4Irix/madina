@@ -56,7 +56,7 @@ GET /api/districts/{cityID}
 
 <summary><strong>Contributing</strong></summary>
 
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](../../issues/new).
+Pull requests and stars are always welcome. For bugs and features requests, [please create an issue](../../issues/new).
 
 #### Author
 
