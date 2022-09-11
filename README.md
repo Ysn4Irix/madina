@@ -36,7 +36,7 @@
 
 <b style="color:brown;">Requests is limited to 100 req/min</b>
 
-### List users
+### List cities
 
 ```endpoint
 GET /api/cities
