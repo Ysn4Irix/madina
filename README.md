@@ -34,7 +34,7 @@
 
 ## Usage
 
-<b style="color:brown;">Requests is limited to 100 req/min</b>
+<b style="color:brown;">The number of requests per user is limited to 100 req/min</b>
 
 ### List cities
 
