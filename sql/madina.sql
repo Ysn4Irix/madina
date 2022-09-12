@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `cities` (
 
 /*!40000 ALTER TABLE `cities` DISABLE KEYS */;
 INSERT INTO `cities` (`code`, `name`, `arabicName`) VALUES
-	(3301, 'AGADIR IDA OUTANANE', 'اكادير إداوتانان'),
+	(3301, 'AGADIR', 'اكادير'),
 	(3302, 'AIN CHOCK', 'عين الشق'),
 	(3303, 'AL HOCEIMA', 'الحسيمة'),
 	(3304, 'AZILAL', 'أزيلال'),
