@@ -83,7 +83,7 @@ module.exports = {
 				return res
 					.status(400)
 					.json(error(`${id} is not a valid Id`, res.statusCode))
-			format === 'xml' ? (data = jtox(rows, 'city')) : (data = rows)
+			format === 'xml' ? (data = jtox(rows, 'district')) : (data = rows)
 
 			if (format === 'xml') {
 				res.set('Content-Type', 'text/xml')

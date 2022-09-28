@@ -12,5 +12,10 @@ module.exports = (json, name) => {
 	const jsparser = new parser(options)
 	json = name === 'city' ? { city: json } : { district: json }
 	let xml = jsparser.parse(json)
-	return '<?xml version="1.0" encoding="utf-8"?>' + xml
+
+	return `<?xml version="1.0" encoding="utf-8"?> ${
+		name === 'city'
+			? `<cities>${xml}</cities>`
+			: `<districts>${xml}</districts>`
+	}`
 }
