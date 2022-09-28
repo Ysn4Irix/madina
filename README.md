@@ -5,7 +5,7 @@
 <br>
 
 <p align="center">
-  <b>Fast API for getting moroccan cities and their districts in json format built with</b><br>
+  <b>Fast API for getting moroccan cities and their districts in json/xml format built with</b><br>
 </p>
 
 <p align="center">
@@ -14,8 +14,6 @@
   <img width="150px" src="https://res.cloudinary.com/ydevcloud/image/upload/v1662120635/yassi/r923h19buxqfs5ouzzf6.svg" align="center" alt="express" />
    &nbsp; &nbsp; &nbsp;
   <img width="150px" src="https://res.cloudinary.com/ydevcloud/image/upload/v1662761742/yassi/njspmtvicp86dur9s9lr.svg" align="center" alt="mysql" />
-  &nbsp; &nbsp; &nbsp;
-  <img width="300px" src="https://res.cloudinary.com/ydevcloud/image/upload/v1662763509/yassi/vv7daf4g6ixdj0xaaxkz.png" align="center" alt="node-cache" />
   <br>
 </p>
 
@@ -38,14 +36,22 @@
 
 ### List cities
 
-```endpoint
-GET /api/cities
+```sh
+# with json format
+GET /api/cities?format=json
+
+# with xml format
+GET /api/cities?format=xml
 ```
 
 ### Get all districts for specific city
 
-```endpoint
-GET /api/districts/{cityID}
+```sh
+# with json format
+GET /api/districts/{cityID}?format=json
+
+# with xml format
+GET /api/districts/{cityID}?format=xml
 ```
 
 <br>

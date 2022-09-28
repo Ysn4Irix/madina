@@ -63,10 +63,7 @@ const validation = errors => {
  */
 
 const errCatcher = (logger, res, handler, err) => {
-	logger.error({
-		message: err.message,
-		stack: err.stack
-	})
+	logger.error(err.message)
 	res.status(500).json(
 		handler('Oops! We have an problem in our backend 😢', res.statusCode)
 	)
