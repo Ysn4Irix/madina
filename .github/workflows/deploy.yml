@@ -17,5 +17,7 @@ jobs:
                       cd ${{ secrets.PROJECT_PATH }}
                       git pull origin main
                       git status
+                      export NVM_DIR=~/.nvm
+                      source ~/.nvm/nvm.sh
                       npm install
                       pm2 restart madina
