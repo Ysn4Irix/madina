@@ -1,0 +1,22 @@
+name: madinaPush
+on:
+    push:
+        branches: [main]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: pushing changes using ssh
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.HOST }}
+                  username: ${{ secrets.USERNAME }}
+                  key: ${{ secrets.PK }}
+                  port: ${{ secrets.PORT }}
+                  script: |
+                      cd ${{ secrets.PROJECT_PATH }}
+                      rimraf node_modules/
+                      git pull origin main
+                      git status
+                      npm install
+                      pm2 restart madina
