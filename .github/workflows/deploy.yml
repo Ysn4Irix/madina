@@ -17,6 +17,5 @@ jobs:
                       cd ${{ secrets.PROJECT_PATH }}
                       git pull origin main
                       git status
-                      rimraf node_modules/
                       npm install
                       pm2 restart madina
