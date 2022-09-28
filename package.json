@@ -29,7 +29,7 @@
 		"dotenv": "^16.0.1",
 		"express": "^4.18.1",
 		"express-rate-limit": "^6.6.0",
-		"fast-xml-parser": "^3.3.3",
+		"fast-xml-parser": "3.3.3",
 		"he": "^1.2.0",
 		"helmet": "^6.0.0",
 		"morgan": "^1.10.0",
