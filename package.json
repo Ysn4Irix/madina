@@ -1,7 +1,7 @@
 {
 	"name": "madina",
 	"version": "1.0.0",
-	"description": "An api for getting moroccan cities and their districts in json/xml format",
+	"description": "An api for getting moroccan cities and their districts in json/xml/csv format",
 	"main": "server.js",
 	"scripts": {
 		"start": "cross-env NODE_ENV=production node server.js",
@@ -32,6 +32,7 @@
 		"fast-xml-parser": "3.3.3",
 		"he": "^1.2.0",
 		"helmet": "^6.0.0",
+		"json-2-csv": "3.7.7",
 		"morgan": "^1.10.0",
 		"mysql2": "^2.3.3",
 		"response-time": "^2.3.2",

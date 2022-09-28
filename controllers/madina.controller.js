@@ -3,6 +3,7 @@ const { success, error, errCatcher } = require('../helpers/apiResponse')
 const logger = require('../helpers/logger')
 const pool = require('../helpers/db')
 const jtox = require('../helpers/jtox')
+const jtocsv = require('../helpers/jtocsv')
 
 module.exports = {
 	alive: async (req, res) => {
@@ -34,7 +35,7 @@ module.exports = {
 		const { format } = req.query
 		if (!format) return res.status(200).send('😢 Specify your format')
 
-		if (format !== 'xml' && format !== 'json') {
+		if (format !== 'xml' && format !== 'json' && format !== 'csv') {
 			return res.status(200).send('😢 Invalid format')
 		}
 		try {
@@ -42,12 +43,24 @@ module.exports = {
 
 			const sql = 'SELECT * FROM cities ORDER BY name'
 			const [rows] = await pool.execute(sql)
-			format === 'xml' ? (data = jtox(rows, 'city')) : (data = rows)
 
-			if (format === 'xml') {
-				res.set('Content-Type', 'text/xml').status(200).send(data)
-			} else {
-				res.status(200).json(success('🎉 done', data, res.statusCode))
+			switch (format) {
+				case 'xml':
+					data = jtox(rows, 'city')
+					res.set('Content-Type', 'text/xml').status(200).send(data)
+					break
+				case 'csv':
+					data = await jtocsv(rows, {
+						prependHeader: false
+					})
+					res.set('Content-Type', 'text/plain').status(200).send(data)
+					break
+				case 'json':
+					data = rows
+					res.status(200).json(
+						success('🎉 done', data, res.statusCode)
+					)
+					break
 			}
 		} catch (err) {
 			errCatcher(logger, res, error, err)
@@ -66,7 +79,7 @@ module.exports = {
 		const { format } = req.query
 		if (!format) return res.status(200).send('😢 Specify your format')
 
-		if (format !== 'xml' && format !== 'json') {
+		if (format !== 'xml' && format !== 'json' && format !== 'csv') {
 			return res.status(200).send('😢 Invalid format')
 		}
 
@@ -83,13 +96,24 @@ module.exports = {
 				return res
 					.status(400)
 					.json(error(`${id} is not a valid Id`, res.statusCode))
-			format === 'xml' ? (data = jtox(rows, 'district')) : (data = rows)
 
-			if (format === 'xml') {
-				res.set('Content-Type', 'text/xml')
-				res.status(200).send(data)
-			} else {
-				res.status(200).json(success('🎉 done', data, res.statusCode))
+			switch (format) {
+				case 'xml':
+					data = jtox(rows, 'city')
+					res.set('Content-Type', 'text/xml').status(200).send(data)
+					break
+				case 'csv':
+					data = await jtocsv(rows, {
+						prependHeader: false
+					})
+					res.set('Content-Type', 'text/plain').status(200).send(data)
+					break
+				case 'json':
+					data = rows
+					res.status(200).json(
+						success('🎉 done', data, res.statusCode)
+					)
+					break
 			}
 		} catch (err) {
 			errCatcher(logger, res, error, err)

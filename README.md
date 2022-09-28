@@ -5,7 +5,7 @@
 <br>
 
 <p align="center">
-  <b>Fast API for getting moroccan cities and their districts in json/xml format built with</b><br>
+  <b>Fast API for getting moroccan cities and their districts in json/xml/csv format built with</b><br>
 </p>
 
 <p align="center">
@@ -42,6 +42,9 @@ GET /api/cities?format=json
 
 # with xml format
 GET /api/cities?format=xml
+
+# with csv format
+GET /api/cities?format=csv
 ```
 
 ### Get all districts for specific city
@@ -52,6 +55,9 @@ GET /api/districts/{cityID}?format=json
 
 # with xml format
 GET /api/districts/{cityID}?format=xml
+
+# with csv format
+GET /api/districts/{cityID}?format=csv
 ```
 
 <br>
