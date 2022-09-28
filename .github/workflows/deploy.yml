@@ -15,8 +15,8 @@ jobs:
                   port: ${{ secrets.PORT }}
                   script: |
                       cd ${{ secrets.PROJECT_PATH }}
-                      rimraf node_modules/
                       git pull origin main
                       git status
+                      rimraf node_modules/
                       npm install
                       pm2 restart madina
