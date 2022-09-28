@@ -1,4 +1,5 @@
 const parser = require('fast-xml-parser').j2xParser
+const he = require('he')
 
 module.exports = (json, name) => {
 	let options = {
