@@ -32,7 +32,7 @@
 		"fast-xml-parser": "3.3.3",
 		"he": "^1.2.0",
 		"helmet": "^6.0.0",
-		"json-2-csv": "3.7.7",
+		"json-2-csv": "3.17.2",
 		"morgan": "^1.10.0",
 		"mysql2": "^2.3.3",
 		"response-time": "^2.3.2",
