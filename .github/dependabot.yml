@@ -7,6 +7,9 @@ updates:
     interval: weekly
     time: '00:00'
   open-pull-requests-limit: 10
+  ignore:
+    - dependency-name: "fast-xml-parser"
+    - dependency-name: "json-2-csv"
   reviewers:
     - ysn4irix
   assignees:
