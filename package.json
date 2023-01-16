@@ -34,7 +34,7 @@
 		"helmet": "^6.0.0",
 		"json-2-csv": "3.7.7",
 		"morgan": "^1.10.0",
-		"mysql2": "^2.3.3",
+		"mysql2": "^3.0.1",
 		"response-time": "^2.3.2",
 		"signale": "^1.4.0"
 	},
