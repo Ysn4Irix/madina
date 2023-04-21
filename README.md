@@ -49,6 +49,8 @@ GET /api/cities?format=csv
 
 ### Get all districts for specific city
 
+-   Search by city Id
+
 ```sh
 # with json format
 GET /api/districts/{cityID}?format=json
@@ -58,6 +60,19 @@ GET /api/districts/{cityID}?format=xml
 
 # with csv format
 GET /api/districts/{cityID}?format=csv
+```
+
+-   Search by city name
+
+```sh
+# with json format
+GET /api/districts?name={cityName}&format=json
+
+# with xml format
+GET /api/districts?name={cityName}&format=xml
+
+# with csv format
+GET /api/districts?name={cityName}&format=csv
 ```
 
 <br>

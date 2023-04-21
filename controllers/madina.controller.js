@@ -118,5 +118,63 @@ module.exports = {
 		} catch (err) {
 			errCatcher(logger, res, error, err)
 		}
+	},
+	getAllDistrictsByCityName: async (req, res) => {
+		if (req.method !== 'GET') {
+			res.status(403).json(
+				error(`${req.method} is not allowed`, res.statusCode)
+			)
+			return
+		}
+
+		const { name, format } = req.query
+
+		if (!name) return res.status(200).send('😢 Specify your city name')
+		if (!format) return res.status(200).send('😢 Specify your format')
+
+		if (format !== 'xml' && format !== 'json' && format !== 'csv') {
+			return res.status(200).send('😢 Invalid format')
+		}
+
+		try {
+			let data = null
+			const sql = `SELECT districts.* FROM districts
+				INNER JOIN cities ON
+				districts.cityId = cities.code
+				WHERE cities.name = ?
+				ORDER BY districts.name`
+
+			const [rows] = await pool.execute(sql, [name.toUpperCase()])
+			if (rows.length === 0)
+				return res
+					.status(400)
+					.json(
+						error(
+							`${name} is not a valid city name`,
+							res.statusCode
+						)
+					)
+
+			switch (format) {
+				case 'xml':
+					data = jtox(rows, 'city')
+					res.set('Content-Type', 'text/xml').status(200).send(data)
+					break
+				case 'csv':
+					data = await jtocsv(rows, {
+						prependHeader: false
+					})
+					res.set('Content-Type', 'text/plain').status(200).send(data)
+					break
+				case 'json':
+					data = rows
+					res.status(200).json(
+						success('🎉 done', data, res.statusCode)
+					)
+					break
+			}
+		} catch (err) {
+			errCatcher(logger, res, error, err)
+		}
 	}
 }
