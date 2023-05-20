@@ -1,0 +1,17 @@
+FROM --platform=arm64 node:18
+ARG DB_HOST=${DB_HOST}
+ENV DB_HOST=${DB_HOST}
+ARG DB_NAME=${DB_NAME}
+ENV DB_NAME=${DB_NAME}
+ARG DB_USER=${DB_USER}
+ENV DB_USER=${DB_USER}
+ARG DB_PASSWORD=${DB_PASSWORD}
+ENV DB_PASSWORD=${DB_PASSWORD}
+WORKDIR /app
+COPY package.json ./
+RUN npm install
+COPY . .
+RUN npm prune --production
+ENV PORT 80
+EXPOSE 80
+CMD ["node", "server.js"]
