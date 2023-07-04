@@ -1,4 +1,4 @@
-FROM --platform=arm64 node:18
+FROM --platform=arm64 node:18-alpine
 ARG DB_HOST=${DB_HOST}
 ENV DB_HOST=${DB_HOST}
 ARG DB_NAME=${DB_NAME}
@@ -9,9 +9,10 @@ ARG DB_PASSWORD=${DB_PASSWORD}
 ENV DB_PASSWORD=${DB_PASSWORD}
 WORKDIR /app
 COPY package.json ./
-RUN npm install
+RUN npm install --location=global pnpm
+RUN pnpm install
 COPY . .
-RUN npm prune --production
-ENV PORT 80
-EXPOSE 80
+RUN pnpm prune --prod
+
+EXPOSE 4000
 CMD ["node", "server.js"]
